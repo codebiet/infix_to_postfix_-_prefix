@@ -1,7 +1,3 @@
-import React, { useEffect, useState, useContext } from "react"
-import './App.css';
-
-
 /*
 This is a helper file containg all the logic use in postfix and prefix convertor and evaluator
 stacker class ::  is a stack maker
@@ -262,8 +258,7 @@ function postfixEval(expression)
         }
         else if(precidencer(expression[i]) >2)
         {
-            A = stak.pop();
-            B = stak.pop();
+            A = stak.pop(), B = stak.pop();
             stak.push(eval(B+expression[i]+A).toString());
         }
         table.char[i] = expression[i];
@@ -288,8 +283,7 @@ function prefixEval(expression)
         }
         else if(precidencer(expression[i]) > 2)
         {
-            A = prestack.pop();
-            B = prestack.pop();
+            A = prestack.pop(), B = prestack.pop();
             prestack.push(eval(A+expression[i]+B).toString());
         }
 
@@ -313,36 +307,3 @@ function checker(expression)
     }
 }
 
-
-
-function App() {
-  const [value , setValue] = useState()
-  const [answer , setAnswer] = useState()
-  const [answer2 , setAnswer2] = useState()
-  function conversion(e) {
-    e.preventDefault();
-    setAnswer(infixToPostfix(value)['postfixExpression']);
-    setAnswer2(infixToPrefix(value)['prefixExpression']);
-  }
-  
-  return (
-  <div>
-    <h1>Infix to Postfix Converter</h1>
-    <div class="convert">
-    <div class="sub">
-      <form onSubmit={conversion}>
-        <label for="one" id="one"> Enter an Infix Expression: </label>
-        <input onChange={(e) => setValue(e.target.value)} type="text" name="one" id="on" placeholder="Ex: a*(b+c)" required autofocus></input><br></br>
-        <div id="ans"></div>
-        <button id='final' title="Submit" >Submit</button>
-        <input id="reset" type="reset"></input>
-        {answer ? <h3>Postfix Expression is {answer}</h3> : <> </> }
-        {answer2 ? <h3>Prefix Expression is {answer2}</h3> : <> </> }
-      </form>
-    </div>
-    </div>
-  </div>
-  );
-}
-
-export default App
