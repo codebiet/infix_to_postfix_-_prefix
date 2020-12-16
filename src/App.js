@@ -327,9 +327,9 @@ function App() {
   
   return (
   <div>
-    <h1>Infix to Postfix Converter</h1>
-    <div class="convert">
-    <div class="sub">
+    <h1>Infix to Postfix & Prefix Converter</h1>
+    <div className="convert">
+    <div className="sub">
       <form onSubmit={conversion}>
         <label for="one" id="one"> Enter an Infix Expression: </label>
         <input onChange={(e) => setValue(e.target.value)} type="text" name="one" id="on" placeholder="Ex: a*(b+c)" required autofocus></input><br></br>
